@@ -1,0 +1,38 @@
+debug: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    org.springframework.web.servlet: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+jwt:
+  secret: spring+insecure++rt+j6++i0u11rg4++li+n5+2ln85uyk+y7u4a+m10t+szmpv+6++i0u11rg4++li+n5+2ln85uyk+y7u4a+m10t+szmpv+
+  accessTokenExpirationMs: 3600000
+  refreshTokenExpirationMs: 604800000
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/board
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate.format_sql: true
+        hibernate.default_batch_fetch_size: 100
+  sql:
+    init:
+      mode: always
+  data:
+    rest:
+      base-path: /api
+      detection-strategy: annotated
+  thymeleaf3:
+    decoupled-logic: true
